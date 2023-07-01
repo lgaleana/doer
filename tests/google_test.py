@@ -31,3 +31,6 @@ class Tests(TestCase):
         perform_task(
             "In what cities in latin america I can live for under $300 in airbnb a month?", False
         )
+
+    def test_whatsapp(self):
+        perform_task("Does whatsapp have a api that I can use?")
