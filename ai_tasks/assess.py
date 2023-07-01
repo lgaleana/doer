@@ -7,9 +7,7 @@ from utils.io import print_system
 
 
 class Assessment(BaseModel):
-    is_enough: bool = Field(
-        description="Is there enough information to satisfy my google search?"
-    )
+    is_helpful: bool = Field(description="Does it help me satisfy my google search?")
     detailed_answer: Optional[str] = Field(
         None, description="Detailed answer to what I'm looking for."
     )
@@ -24,7 +22,7 @@ FUNCTIONS = [
 ]
 
 
-PROMPT = """You are an assistant that assesess whether I have found enough information to satisfy my google search.
+PROMPT = """You are an assistant that assesess whether I have found information to help me satisfy my google search.
 If I have, you must provide me with a detailed answer to what I'm looking for.
 
 This is what I'm looking for: {task}.
