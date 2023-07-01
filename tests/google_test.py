@@ -34,3 +34,7 @@ class Tests(TestCase):
 
     def test_whatsapp(self):
         perform_task("Does whatsapp have a api that I can use?")
+
+    def test_whatsapp_code(self):
+        # Will throw error with code
+        perform_task("Show me a code example of how to use whatsapp api with the official meta's docs.")

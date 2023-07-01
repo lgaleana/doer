@@ -1,3 +1,5 @@
+import json
+import re
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -39,4 +41,14 @@ def assess_text(text: str, task: str) -> Assessment:
         function_call={"name": "assessment"},  # type: ignore
     )
     print_system(assessment["arguments"])
-    return Assessment.parse_raw(assessment["arguments"])
+    return _parse_response(assessment["arguments"])
+
+
+def _parse_response(arguments: str) -> Assessment:
+    # For parsing text with code.
+    match = re.search('"""(.*)"""', arguments, re.DOTALL)
+    if match:
+        escaped = json.dumps(match.group(1))
+        arguments = re.sub('(""".*""")', f"{escaped}", arguments, flags=re.DOTALL)
+    arguments = json.loads(arguments, strict=False)
+    return Assessment.model_validate(arguments)
