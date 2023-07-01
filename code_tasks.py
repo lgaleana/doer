@@ -39,7 +39,6 @@ def scrape_url(url: str):
 def perform_task(task: str) -> str:
     query = rephrase(task)
     print_system(query)
-    breakpoint()
     google_results = google_search(query)
     for url in google_results:
         print_system(url)

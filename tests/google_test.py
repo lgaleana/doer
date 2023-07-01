@@ -19,10 +19,10 @@ class Tests(TestCase):
     def test_rain_nyc(self):
         perform_task("is it going to rain tomorrow in nyc?")
 
-    def test_maps_latest(self):
+    def test_map_latest(self):
         perform_task("i want to know how to use the latest google maps api")
 
-    def test_maps_example(self):
+    def test_map_example(self):
         perform_task("give me an example of how to use the latest google maps api")
 
     def test_subway(self):
