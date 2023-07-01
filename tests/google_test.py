@@ -28,9 +28,7 @@ class Tests(TestCase):
 
     def test_la_300(self):
         # Has failure cases
-        perform_task(
-            "In what cities in latin america I can live for under $300 in airbnb a month?", False
-        )
+        perform_task("In what cities in latin america I can live for under $300 in airbnb a month?")
 
     def test_whatsapp(self):
         perform_task("Does whatsapp have a api that I can use?")

@@ -22,5 +22,6 @@ def summarize(task: str, google_search: Dict[str, Optional[str]]) -> str:
                 "content": PROMPT.format(task=task, google_search=google_search_str),
             }
         ],
+        model="gpt-4",
     )
     return summary

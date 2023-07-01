@@ -41,7 +41,6 @@ def scrape_url(url: str):
 def scrape_and_summarize(url: str, task: str) -> Optional[Assessment]:
     print_system(url)
     text = scrape_url(url)
-    print_system(text)
     if len(text) < _12K_TOKENS:
         assessment = assess_text(text, task)
         if assessment.is_helpful:
