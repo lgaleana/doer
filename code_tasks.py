@@ -68,7 +68,7 @@ def perform_task(task: str, parallel: bool = True) -> None:
             breakpoint()
 
     summaries = {
-        url: a.detailed_answer for url, a in zip(google_results, assesments) if a
+        url: a.information for url, a in zip(google_results, assesments) if a
     }
 
     summarize(task, summaries)

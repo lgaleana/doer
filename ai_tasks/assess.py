@@ -10,9 +10,7 @@ from utils.io import print_system
 
 class Assessment(BaseModel):
     is_helpful: bool = Field(description="Does it help me satisfy my google search?")
-    detailed_answer: Optional[str] = Field(
-        None, description="Detailed answer to what I'm looking for."
-    )
+    information: Optional[str] = Field(None, description="As much information as possible from the text.")
 
 
 FUNCTIONS = [
@@ -25,7 +23,7 @@ FUNCTIONS = [
 
 
 PROMPT = """You are an assistant that assesess whether I have found information to help me satisfy my google search.
-If I have, you must provide me with a detailed answer to what I'm looking for.
+If I have, find as much information as possible from the text to satisfy my google search.
 
 I found this text after doing a google search:
 {text}
