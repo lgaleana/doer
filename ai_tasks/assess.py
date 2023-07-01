@@ -25,10 +25,10 @@ FUNCTIONS = [
 PROMPT = """You are an assistant that assesess whether I have found information to help me satisfy my google search.
 If I have, you must provide me with a detailed answer to what I'm looking for.
 
-This is what I'm looking for: {task}.
-
 I found this text after doing a google search:
-{text}"""
+{text}
+
+This is what I'm looking for: {task}."""
 
 
 def assess_text(text: str, task: str) -> Assessment:

@@ -24,7 +24,10 @@ class Tests(TestCase):
 
     def test_subway(self):
         # Has failure cases
-        perform_task("when is the next c train coming to spring street?")
+        perform_task("when is the next c train coming to spring street?", False)
 
-    def test_snl(self):
-        perform_task("how do i get tickets for snl?")
+    def test_la_300(self):
+        # Has failure cases
+        perform_task(
+            "In what cities in latin america I can live for under $300 in airbnb a month?", False
+        )
