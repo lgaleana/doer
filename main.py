@@ -13,6 +13,10 @@ if __name__ == "__main__":
     try:
         task = user_input("Type a google search: ")
         perform_task(task)
+
+        print()
+        feedback = user_input("Were the results useful (y/n)? ")
+        logging.log(feedback=feedback != "n")
     except:
         pass
     finally:
