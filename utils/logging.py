@@ -22,6 +22,9 @@ def log(skip_stdout: bool = False, **kwargs) -> None:
 
 
 def dump(name: Optional[str] = None) -> None:
+    if os.environ.get("TESTS", "") == "True":
+        return
+
     name_prefix = _find_name_prefix_in_logs(name)
     _check_directory()
 
