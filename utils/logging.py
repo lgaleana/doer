@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+import threading
 from typing import Optional
 
 from utils.io import print_system
@@ -9,13 +10,15 @@ from utils.io import print_system
 LOG_DIR = "logs"
 
 LOGS = []
+lock = threading.Lock()
 
 
 def log(skip_stdout: bool = False, **kwargs) -> None:
     for k, w in kwargs.items():
         str_to_log = f"{k}: {w}"
 
-        LOGS.append(str_to_log)
+        with lock:
+            LOGS.append(str_to_log)
 
         if not skip_stdout:
             print_system(str_to_log)
