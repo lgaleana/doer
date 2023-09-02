@@ -10,6 +10,7 @@ from ai_tasks.assess import Assessment, assess_text
 from ai_tasks.rephrase import rephrase
 from ai_tasks.summarize import summarize
 from utils.io import print_system
+from utils.logging import log
 
 
 load_dotenv()
@@ -39,7 +40,7 @@ def scrape_url(url: str):
 
 
 def scrape_and_summarize(url: str, task: str) -> Optional[Assessment]:
-    print_system(url)
+    log(url=url)
     text = scrape_url(url)
     if len(text) < _12K_TOKENS:
         assessment = assess_text(text, task)
@@ -50,7 +51,7 @@ def scrape_and_summarize(url: str, task: str) -> Optional[Assessment]:
 
 def perform_task(task: str, parallel: bool = True) -> None:
     query = rephrase(task)
-    print_system(query)
+    log(query=query)
     google_results = google_search(query)
 
     if parallel:

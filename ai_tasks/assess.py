@@ -5,7 +5,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 from ai import llm
-from utils.io import print_system
+from utils.logging import log
 
 
 class Assessment(BaseModel):
@@ -40,7 +40,7 @@ def assess_text(text: str, task: str) -> Assessment:
         functions=FUNCTIONS,
         function_call={"name": "assessment"},  # type: ignore
     )
-    print_system(assessment["arguments"])
+    log(assessment=assessment["arguments"])
     return _parse_response(assessment["arguments"])
 
 

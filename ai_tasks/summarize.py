@@ -1,6 +1,7 @@
 from typing import Dict, Optional
 
 from ai import llm
+from utils.logging import log
 
 
 PROMPT = """You are an assistant that helps me find what I'm looking for from a google search. Try to give me a detailed answer to what I'm looking for. Include any useful urls.
@@ -29,4 +30,5 @@ def summarize(task: str, google_search: Dict[str, Optional[str]]) -> str:
         ],
         model="gpt-4",
     )
+    log(summary=summary, skip_stdout=True)
     return summary
