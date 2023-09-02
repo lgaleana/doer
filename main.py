@@ -3,5 +3,5 @@ from utils.io import user_input
 
 
 if __name__ == "__main__":
-    task = user_input("What information are you looking for? ")
+    task = user_input("Type a google search: ")
     perform_task(task)

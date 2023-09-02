@@ -10,7 +10,9 @@ from utils.io import print_system
 
 class Assessment(BaseModel):
     is_helpful: bool = Field(description="Does it help me satisfy my google search?")
-    information: Optional[str] = Field(None, description="As much information as possible from the text.")
+    relevant_text: Optional[str] = Field(
+        None, description="Extract the text that contains the information that I need."
+    )
 
 
 FUNCTIONS = [
@@ -23,7 +25,7 @@ FUNCTIONS = [
 
 
 PROMPT = """You are an assistant that assesess whether I have found information to help me satisfy my google search.
-If I have, find as much information as possible from the text to satisfy my google search.
+If I have, extract the text that contains the information that I need.
 
 I found this text after doing a google search:
 {text}
@@ -43,10 +45,7 @@ def assess_text(text: str, task: str) -> Assessment:
 
 
 def _parse_response(arguments: str) -> Assessment:
-    # For parsing text with code.
-    match = re.search('"""(.*)"""', arguments, re.DOTALL)
-    if match:
-        escaped = json.dumps(match.group(1))
-        arguments = re.sub('(""".*""")', f"{escaped}", arguments, flags=re.DOTALL)
+    # Not sure. This works.
+    arguments = json.dumps(arguments)
     arguments = json.loads(arguments, strict=False)
-    return Assessment.model_validate(arguments)
+    return Assessment.parse_raw(arguments)

@@ -10,11 +10,16 @@ This is what I found by doing a google search:
 
 This is what I'm looking for: {task}."""
 
+_8K_TOKENS = 28_000
+
 
 def summarize(task: str, google_search: Dict[str, Optional[str]]) -> str:
-    google_search_str = "\n\n".join(
-        f"Url: {url}\n{summary}" for url, summary in google_search.items()
-    )
+    google_search_str = ""
+    for url, summary in google_search.items():
+        if len(google_search_str) < _8K_TOKENS:
+            google_search_str += f"Url: {url}\n{summary}\n\n"
+        else:
+            break
     summary, _ = llm.stream_next(
         [
             {

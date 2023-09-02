@@ -15,7 +15,7 @@ from utils.io import print_system
 load_dotenv()
 
 
-_12K_TOKENS = 30_000
+_12K_TOKENS = 48_000
 
 
 def google_search(query: str) -> List:
@@ -68,7 +68,7 @@ def perform_task(task: str, parallel: bool = True) -> None:
             breakpoint()
 
     summaries = {
-        url: a.information for url, a in zip(google_results, assesments) if a
+        url: a.relevant_text for url, a in zip(google_results, assesments) if a
     }
 
     summarize(task, summaries)
