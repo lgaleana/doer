@@ -1,7 +1,7 @@
-import json
 import os
-from datetime import datetime
+import sys
 import threading
+from datetime import datetime
 from typing import Optional
 
 from utils.io import print_system
@@ -40,7 +40,8 @@ def dump(name: Optional[str] = None) -> None:
 
 def interrupt_dump(signum, frame):
     log(feedback="interrupt")
-    dump()
+    dump(name="query")
+    sys.exit(0)
 
 
 def _check_directory() -> None:
