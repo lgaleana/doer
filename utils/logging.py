@@ -39,6 +39,7 @@ def dump(name: Optional[str] = None) -> None:
 
 
 def interrupt_dump(signum, frame):
+    log(feedback="interrupt")
     dump()
 
 
