@@ -49,7 +49,7 @@ def scrape_and_summarize(url: str, task: str) -> Optional[Assessment]:
     return None
 
 
-def perform_task(task: str, parallel: bool = True) -> None:
+def perform_task(task: str, parallel: bool = True) -> str:
     query = rephrase(task)
     log(query=query)
     google_results = google_search(query)
@@ -72,4 +72,4 @@ def perform_task(task: str, parallel: bool = True) -> None:
         url: a.relevant_text for url, a in zip(google_results, assesments) if a
     }
 
-    summarize(task, summaries)
+    return summarize(task, summaries)

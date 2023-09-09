@@ -2,6 +2,7 @@ beautifulsoup4
 urllib3==1.26.6 
 openai
 googlesearch-python
+gradio==3.41.2
 pydantic
 pytest
 python-dotenv
