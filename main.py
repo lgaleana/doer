@@ -17,7 +17,9 @@ if __name__ == "__main__":
         print()
         feedback = user_input("Were the results useful (y/n)? ")
         logging.log(feedback=feedback != "n")
-    except:
+    except Exception as e:
+        print(str(e))
+        logging.log(error=str(e))
         pass
     finally:
         logging.dump(name="query")
